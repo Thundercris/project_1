@@ -45,4 +45,14 @@ body {
   margin: 0;
 }
 
+.grid div.disc {
+  background-image: url('Jurassic-Park-Logo-1993-650x366.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+}
 

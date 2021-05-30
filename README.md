@@ -41,3 +41,5 @@ The most difficult aspect of this game is the win condition, since the whole boa
 * Refactor your code as you go
 * Make sure you have a good idea of what your MVP is and only add extra features once you have achieved it
 * Do just enough styling to get started, then once you have your MVP polish up the styling before moving on
+
+
