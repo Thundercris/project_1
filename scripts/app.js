@@ -29,18 +29,29 @@ function init() {
   const computerChoice = {currentChoice: null }
   const choosenElement = []
   const choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20,27,34,41]]
-  playerChoice.currentChoice = choices[0][2]
-  choosenElement.push(playerChoice.currentChoice)
-  console.log(choosenElement)
-  playerChoice.currentChoice = choices[2][1]
-  choosenElement.push(playerChoice.currentChoice)
-  console.log(choosenElement)
+
+  // playerChoice.currentChoice = choices[0][2] //testing - selecting element from the array 
+  // choosenElement.push(playerChoice.currentChoice) //testing - add what the player choose to the empty array created to store the element choosen
+  // console.log(choosenElement)
+  // playerChoice.currentChoice = choices[2][1] //testing - array is now populated with both choosen element
+  // choosenElement.push(playerChoice.currentChoice)
+  // console.log(choosenElement)
 
 
+  let results 
   function insertDisc() {
-    console.log(insertDisc)
-  
+    // console.log(insertDisc)
+    return choices.map(function(subArray) {
+      console.log(subArray)
+      results = Math.max.apply(null, subArray)
+      console.log(results) 
+      return results
+    })
   }
+  insertDisc()
+
+  playerChoice.currentChoice = choices
+
   // I need to create the possible choices, the idea is having the arrays of each column, in this way I can also create a rule in order to choose always the n-1.
   // I need then to define the choice of both, human and computer(random)
 
