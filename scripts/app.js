@@ -25,8 +25,17 @@ function init() {
   }
   createGrid(discStartPosition)
   
-  const choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20.27,34,41]]
-  console.log(choices)
+  const playerChoice = {currentChoice: null }
+  const computerChoice = {currentChoice: null }
+  const choosenElement = []
+  const choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20,27,34,41]]
+  playerChoice.currentChoice = choices[0][2]
+  choosenElement.push(playerChoice.currentChoice)
+  console.log(choosenElement)
+  playerChoice.currentChoice = choices[2][1]
+  choosenElement.push(playerChoice.currentChoice)
+  console.log(choosenElement)
+
 
   function insertDisc() {
     console.log(insertDisc)
@@ -43,11 +52,11 @@ function init() {
       this.totalDiscs = totalDiscs
     } 
     playerMove(player) {
-      if (player.type === 'Human' || player.type === 'Computer' && this.discQuantity >= 21) {
-        player.total++
-        this.totalDiscs--
-      } else 
-        alert('TIE!')
+      // if (player.type === 'Human' || player.type === 'Computer' && this.discQuantity >= 21) {
+      //   player.total++
+      //   this.totalDiscs--
+      // } else 
+      //   alert('TIE!')
     } 
   }
 
