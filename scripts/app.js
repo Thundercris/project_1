@@ -1,6 +1,6 @@
 function init() {
   const grid = document.querySelector('.grid')
-  
+
   const rowLength = 7
   const columnLength = 6
   const cellCount =  rowLength *  columnLength
@@ -10,7 +10,7 @@ function init() {
 
   const discClass = 'disc'
   const discStartPosition = 0
-  let discCurrentPosition = 0
+  let discCurrentPosition = null 
 
   // MAKE A GRID
   function createGrid(discStartPosition) {
@@ -25,10 +25,16 @@ function init() {
   }
   createGrid(discStartPosition)
   
+  const choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20.27,34,41]]
+  console.log(choices)
+
   function insertDisc() {
     console.log(insertDisc)
-
+  
   }
+  // I need to create the possible choices, the idea is having the arrays of each column, in this way I can also create a rule in order to choose always the n-1.
+  // I need then to define the choice of both, human and computer(random)
+
   const cellSelect = document.querySelectorAll('.cell')
 
   class Game {
