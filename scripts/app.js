@@ -25,65 +25,83 @@ function init() {
   }
   createGrid(discStartPosition)
 
-  //SELECT THE GRID
+  //SELECT THE GRID AND CONVERT THE TEXT INTO A NUMBER
+  //CHECK IN WHICH POSITION IS THE NUMBER, THEN GIVE ME BACK THE ARRAY THAT CONTAINS THE NUMBER
+  //GIVE ME THE BIGGEST (LAST AVAILABLE NUMBER)
+
   const cellSelect = document.querySelectorAll('.cell') 
-
-  function insertDisc(cell) {
-    console.log(cell)
-    const convertedNumber = parseInt(cell.textContent) //COMPARE THE CELL CLICKED CONVERTING THE TEXT INTO NUMBER
-    console.log(convertedNumber)
-
-    //check in which array the "convertedNumber" belongs
-  }
-
-  // I need to create the possible choices, the idea is having the arrays of each column, in this way I can also create a rule in order to choose always the n-1. 
-  // I need then to define the choice of both, human and computer(random)
-
-  // make the event listener working for all button that I click
-  // after the cell is clicked I need to know the position which is done by a number
-  // then I need to know that value in which arrays is, once this is known I can call the function and check on this array which is the biggest number (using the funcion I built before)
-  // Once I know which is the biggest value I need to check that this value wasn't choose already
-  // If the value was choosen, check again and give me the other biggest - check if this can be done in a different way
-  // check again against the one I already chose
-  // if the number is not in the array of the "chosen Element" then add it to the array.
-
   const playerChoice = { currentChoice: null }
   const computerChoice = { currentChoice: null }
   const choosenElement = []
-  const choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20,27,34,41]]
   
-  let results 
+  
   let arrayChoice 
-  
-  //GET ELEMENT FROM THE CHOICES - IN THIS WAY I MIGHT NOT HAVE THE PROBLEM OF CHECKING IF THE ELEMENT CHOOSE IN IN THE CHOOSENELEMENT ARRAY
 
-  //FIND THE BIGGEST VALUE OF THE ARRAY CHOICES CHECKING INSIDE EACH ELEMENT
+  let choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20,27,34,41]]
 
-  function chooseLowest() { 
-    arrayChoice = choices.map(function(subArray) {
-      // console.log(arrayChoice)
-      results = Math.max.apply(null, subArray)
-      console.log(results) 
-      return results
-    })
+  function returnArray(convertedNumber) {
+    for (let i = 0; i < choices.length; i++) {
+      if (choices[i].includes(convertedNumber)){
+        return choices[i]
+      }
+    } 
   }
-  chooseLowest()
-
-  function playerChoose() {
-    playerChoice.currentChoice = arrayChoice[3] 
-    // console.log(playerChoice.currentChoice)
-    choosenElement.push(playerChoice.currentChoice)
-    console.log(choosenElement)
-    playerChoice.currentChoice = arrayChoice[4]  //&& results  !== choosenElement
-    choosenElement.push(playerChoice.currentChoice)
-    console.log(choosenElement)
-  }
-  playerChoose()
-
-
   
+  function insertDisc(cell) {
+    // console.log(cell)
+    // convert the div class into a number
+    const convertedNumber = parseInt(cell.textContent) 
+    // console.log(convertedNumber)
+    //check in which array the "convertedNumber" belongs using the return array function, then give me back the array
+    const arrayResult = returnArray(convertedNumber) 
+    // console.log(arrayResult)
+    //check in the array which is the biggest element and in this way I will choose always the lowest cell in the column
+    const maxValue = Math.max.apply(null, arrayResult)
+    // console.log(maxValue)
+    const indexArray  = getTheArrayIndex(maxValue)
+    console.log(indexArray)
+    
+  }
+  // I need to get the position of maxValue once I find it remove it from the array and + into choosenElement
+  function getTheArrayIndex(maxValue) {
+    for (let i = 0; i < choices.length; i++) {
+      if (choices[i].indexOf(maxValue) !== -1){
+        return choices[i].indexOf(maxValue)
+      }
+    }
+  } 
+  
+  // I need to create the possible choices, the idea is having the arrays of each column, in this way I can also create a rule in order to choose always the n-1. 
+  // I need then to define the choice of both, human and computer(random)
+  // make the event listener working for all button that I click
+  // after the cell is clicked I need to know the position which is done by a number
+  // then I need to know that value in which arrays is, once this is known I can call the function and check on this array which is the biggest number (using the funcion I built before)
+  // Once I know which is the biggest value I need to know the position of this value
+  // after know the position, I need to check the position of the array result
+  // Once I know this, I need to find a way to remove the element from the "choices" that I already change to let, in this way I can use this for all future moves.
+  // I need to push the element I chose inside the "choosenElement" (I will need this later to check the result - probably is better having two array one for each player?)
+  
+  //win condition: I need to have 4 discs with the same color in a row column or diagonal. [I also need to check if there is a Tie( using the idea below)]
+  //in both cases if is a win or a tie ---> alert message and option of starting a new game (maybe with a button?)
+  //vertical option: check each column, organising those in arrays like choices if 4 disc in a row have the same color I win else continue the game (if I still having discs available)
+  //orizontal option: same of the above
+  //diagonal option: same of the above
+
+
+  // function playerChoose() {
+  //   playerChoice.currentChoice = arrayChoice[3] 
+  //   // console.log(playerChoice.currentChoice)
+  //   choosenElement.push(playerChoice.currentChoice)
+  //   console.log(choosenElement)
+  //   playerChoice.currentChoice = arrayChoice[4]  //&& results  !== choosenElement
+  //   choosenElement.push(playerChoice.currentChoice)
+  //   console.log(choosenElement)
+  // }
+  // playerChoose()
+
   function computerChoose() {
-    //computer choose random value but I have to check that that value is not in the choosenElement array 
+    //computer choose random value from choices, in order to randomize what I can do is to convert choices in one array cointaining all element instead of having them split into arrays.
+    //but how can I pass the problem of the biggest value? maybe I can  get the last element (the biggest) of each array and then randomize only one element of each array? X.X
   }
 
   
