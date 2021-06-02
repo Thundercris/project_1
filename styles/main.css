@@ -53,6 +53,12 @@ body {
   display: flex;
   justify-items: center;
   align-items: center;
-
 }
 
+.grid div.player {
+  background-color: red;
+}
+
+.grid div.computer {
+  background-color: yellow;
+}
