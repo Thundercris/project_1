@@ -5,6 +5,8 @@ function init() {
   const columnLength = 6
   const cellCount =  rowLength *  columnLength
   const cells = []
+  const playerChoices = []
+  const computerChoices = []
   
   console.log(cellCount)
 
@@ -21,7 +23,7 @@ function init() {
       cell.innerText = i 
       grid.appendChild(cell) 
       cells.push(cell) 
-      console.log(cell)
+      // console.log(cell)
     }
   }
   createGrid(discStartPosition)
@@ -33,8 +35,7 @@ function init() {
   const cellSelect = document.querySelectorAll('.cell') 
   const playerChoice = { currentChoice: null }
   const computerChoice = { currentChoice: null }
-  const choosenElement = []
-  let randomizeValue = []
+  // const choosenElement = []
 
   let currentPlayer = 'player'
 
@@ -49,25 +50,27 @@ function init() {
   }
   
   function insertDisc(cell) {
-    // console.log(cell)
-    // convert the div class into a number
+    // convert the div id into a number
     const convertedNumber = parseInt(cell.id) 
-    console.log(cell.id)
-    console.log(convertedNumber)
-    //check in which array the "convertedNumber" belongs using the return array function, then give me back the array
+    // console.log(cell.id)
+    // console.log(convertedNumber)
+    // check in which array the "convertedNumber" belongs using the return array function, return the array
     const arrayResult = returnArray(convertedNumber) 
-    console.log(arrayResult)
+    // console.log(arrayResult)
 
     const availableSpaces = arrayResult.filter(item => !cells[item].classList.contains('disc'))
-    console.log(availableSpaces)
+    // console.log(availableSpaces)
     cells[Math.max.apply(null, availableSpaces)].classList.add('disc')
     cells[Math.max.apply(null, availableSpaces)].classList.add(currentPlayer)
-    console.log(cells[Math.max.apply(null, availableSpaces)])
-    //swap player
-  
+    // console.log(cells[Math.max.apply(null, availableSpaces)])
+    // number selected
+    const valueSelected = Math.max.apply(null, availableSpaces)
+    selectChoices(currentPlayer, valueSelected)
+
     swapPlayer()  
   }
 
+  //SWAP PLAYER
   function swapPlayer() {
     if (currentPlayer === 'player') {
       currentPlayer = 'computer'
@@ -76,37 +79,45 @@ function init() {
       currentPlayer = 'player'
     } 
   }
+  //COMPUTER CHOICE
   function computerTurn() {
     const randomNumber = Math.floor(Math.random() * 7)
     insertDisc(cells[randomNumber])
   }
-
-  function name(params) {
-    
+  //STORE SELECTED ELEMENT INTO TWO ARRAYS, PLAYER AND COMPUTER
+  function selectChoices(player, valueSelected) {
+    if (player === 'player'){
+      playerChoices.push(valueSelected)
+      console.log(playerChoices)
+    } else {
+      computerChoices.push(valueSelected)
+      console.log(computerChoices)
+    }
   }
+  
 
   // console.log(arrayResult)
   //check in the array which is the biggest element and in this way I will choose always the lowest cell in the column
   // const maxValue = Math.max.apply(null, arrayResult)
   // console.log(maxValue)
-  // //insert disc class
+  //insert disc class
   // cells[maxValue].classList.add('player')
-  // //this is the position of the maxValue in the array
+  //this is the position of the maxValue in the array
   // const indexArray  = getTheArrayIndex(maxValue)
   // console.log(indexArray)
-  // //Position of the arrayResult that contain the maxValue
+  //Position of the arrayResult that contain the maxValue
   // const arrayPosition = choices.indexOf(arrayResult)
   // console.log(arrayPosition)
-  // //Remove maxValue from choices
+  //Remove maxValue from choices
   // choices[arrayPosition] = choices[arrayPosition].slice(0, indexArray) //I have the issue of -1 so I might need to put all in a function
-  // //Push maxValue into choosenElement (only one array for now to test it)
+  //Push maxValue into choosenElement (only one array for now to test it)
   // choosenElement.push(maxValue)
   // console.log(choices)
   // console.log(choosenElement)
 
   
   
-  // // I need to get the position of maxValue once I find it remove it from the array and + into choosenElement
+  // I need to get the position of maxValue once I find it remove it from the array and + into choosenElement
   // function getTheArrayIndex(maxValue) {
   //   for (let i = 0; i < choices.length; i++) {
   //     if (choices[i].indexOf(maxValue) !== -1){
@@ -134,7 +145,6 @@ function init() {
 
   // function playerChoose() {
   //   playerChoice.currentChoice = arrayChoice[3] 
-  //   // console.log(playerChoice.currentChoice)
   //   choosenElement.push(playerChoice.currentChoice)
   //   console.log(choosenElement)
   //   playerChoice.currentChoice = arrayChoice[4]  //&& results  !== choosenElement
@@ -144,8 +154,8 @@ function init() {
   // playerChoose()
 
   // function computerChoose() {
-  //   //computer choose random value from choices, in order to randomize what I can do is to convert choices in one array cointaining all element instead of having them split into arrays.
-  //   //but how can I pass the problem of the biggest value? maybe I can  get the last element (the biggest) of each array and then randomize only one element of each array? X.X
+  //computer choose random value from choices, in order to randomize what I can do is to convert choices in one array cointaining all element instead of having them split into arrays.
+  //but how can I pass the problem of the biggest value? maybe I can  get the last element (the biggest) of each array and then randomize only one element of each array? X.X
     
   // }
 
@@ -155,12 +165,12 @@ function init() {
   //     this.totalDiscs = totalDiscs
   //   } 
   //   playerMove(player) {
-  //     // if (player.type === 'Human' || player.type === 'Computer' && this.discQuantity >= 21) {
-  //     //   player.total++
-  //     //   this.totalDiscs--
-  //     // } else 
-  //     //   alert('TIE!')
-  //   } 
+  // if (player.type === 'Human' || player.type === 'Computer' && this.discQuantity >= 21) {
+  //   player.total++
+  //   this.totalDiscs--
+  // } else 
+  //   alert('TIE!')
+  // } 
   // }
 
   // class Player {
