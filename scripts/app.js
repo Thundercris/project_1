@@ -7,12 +7,13 @@ function init() {
   const cells = []
   const playerChoices = []
   const computerChoices = []
+
   
   console.log(cellCount)
 
   const discClass = 'disc'
   const discStartPosition = 0
-  let discCurrentPosition = null 
+  // let discCurrentPosition = null 
 
   // MAKE A GRID
   function createGrid(discStartPosition) {
@@ -33,13 +34,17 @@ function init() {
   //GIVE ME THE BIGGEST (LAST AVAILABLE NUMBER)
 
   const cellSelect = document.querySelectorAll('.cell') 
-  const playerChoice = { currentChoice: null }
-  const computerChoice = { currentChoice: null }
-  // const choosenElement = []
+  // const playerChoice = { currentChoice: null }
+  // const computerChoice = { currentChoice: null }
 
   let currentPlayer = 'player'
 
   let choices = [[0,7,14,21,28,35],[1,8,15,22,29,36],[2,9,16,23,30,37],[3,10,17,24,31,38],[4,11,18,25,32,39],[5,12,19,26,33,40],[6,13,20,27,34,41]]
+
+  let win = false
+  const columns = [[35,28,21,14,7,0],[36,29,22,15,8,1],[37,30,23,16,9,2],[38,31,24,17,10,3],[39,32,25,18,11,5],[40,33,26,19,12,5],[41,34,27,20,13,6]]
+  const rows = [[35,36,37,38,39,40,41],[28,29,30,31,32,33,34],[21,22,23,24,25,26,27],[14,15,16,17,18,19,20],[7,8,9,10,11,12,13],[0,1,2,3,4,5,6]]
+  const diagonal  = [[21,15,9,3],[28,22,16,10,4],[35,29,23,17,11,5],[36,30,24,18,12,6],[37,31,25,19,13],[38,32,26,20],[38,30,22,14],[39,31,23,15,7],[40,32,24,16,8,0],[41,33,25,17,9,1],[34,26,18,10,2],[27,19,11,3]]
 
   function returnArray(convertedNumber) {
     for (let i = 0; i < choices.length; i++) {
@@ -50,6 +55,14 @@ function init() {
   }
   
   function insertDisc(cell) {
+
+    winCondition(columns, 'player')
+    winCondition(columns, 'computer')
+    winCondition(rows, 'player')
+    winCondition(rows, 'computer')
+    winCondition(diagonal, 'player')
+    winCondition(diagonal, 'computer')
+
     // convert the div id into a number
     const convertedNumber = parseInt(cell.id) 
     // console.log(cell.id)
@@ -57,17 +70,19 @@ function init() {
     // check in which array the "convertedNumber" belongs using the return array function, return the array
     const arrayResult = returnArray(convertedNumber) 
     // console.log(arrayResult)
-
     const availableSpaces = arrayResult.filter(item => !cells[item].classList.contains('disc'))
     // console.log(availableSpaces)
     cells[Math.max.apply(null, availableSpaces)].classList.add('disc')
     cells[Math.max.apply(null, availableSpaces)].classList.add(currentPlayer)
     // console.log(cells[Math.max.apply(null, availableSpaces)])
     // number selected
-    const valueSelected = Math.max.apply(null, availableSpaces)
-    selectChoices(currentPlayer, valueSelected)
+    // const valueSelected = Math.max.apply(null, availableSpaces)
+    // selectChoices(currentPlayer, valueSelected)
 
-    swapPlayer()  
+    setTimeout(function () {
+      swapPlayer()  
+    }, 500)
+    
   }
 
   //SWAP PLAYER
@@ -82,20 +97,38 @@ function init() {
   //COMPUTER CHOICE
   function computerTurn() {
     const randomNumber = Math.floor(Math.random() * 7)
+    // console.log(randomNumber)
     insertDisc(cells[randomNumber])
   }
-  //STORE SELECTED ELEMENT INTO TWO ARRAYS, PLAYER AND COMPUTER
-  function selectChoices(player, valueSelected) {
-    if (player === 'player'){
-      playerChoices.push(valueSelected)
-      console.log(playerChoices)
-    } else {
-      computerChoices.push(valueSelected)
-      console.log(computerChoices)
-    }
-  }
-  
 
+  //STORE SELECTED ELEMENT INTO TWO ARRAYS, PLAYER AND COMPUTER
+  // function selectChoices(player, valueSelected) {
+  //   if (player === 'player'){
+  //     playerChoices.push(valueSelected)
+  //     console.log(playerChoices)
+  //   } else {
+  //     computerChoices.push(valueSelected)
+  //     console.log(computerChoices)
+  //   }
+  // }
+
+  function winCondition(array, player) {
+    for (let i = 0; i < array.length; i++){
+      let inRow = 0
+      
+      array[i].forEach(element => {
+        if (cells[element].classList.contains(player)){
+          inRow++
+        } else {
+          inRow = 0
+        }
+        if (inRow > 3){
+          win = true
+          alert(player + ' won!')
+        } 
+      })
+    }
+  } 
   // console.log(arrayResult)
   //check in the array which is the biggest element and in this way I will choose always the lowest cell in the column
   // const maxValue = Math.max.apply(null, arrayResult)
@@ -159,41 +192,15 @@ function init() {
     
   // }
 
-  // class Game {
-  //   constructor (players, totalDiscs) {
-  //     this.players = players
-  //     this.totalDiscs = totalDiscs
-  //   } 
-  //   playerMove(player) {
-  // if (player.type === 'Human' || player.type === 'Computer' && this.discQuantity >= 21) {
-  //   player.total++
-  //   this.totalDiscs--
-  // } else 
-  //   alert('TIE!')
-  // } 
-  // }
-
-  // class Player {
-  //   constructor (type, discColor, discQuantity) {
-  //     this.type = type
-  //     this.discColor = discColor
-  //     this.discQuantity = discQuantity
-  //     this.total = 0
-  //   }
-  // }
-  // const playerHuman =  new Player('Human', 'red', 21)
-  // const playerComputer = new Player('Computer', 'yellow', 21)
-  // const connectGame = new Game([playerHuman, playerComputer], 42)
-  // console.log(playerHuman)
-  // console.log(playerComputer)
-  // console.log(connectGame)
-
   cells.forEach(cell => {
     // cell.addEventListener('click', insertDisc)
     cell.addEventListener('click', function(){
-      insertDisc(cell)  
+      insertDisc(cell)
     })
   })
   
 }
 window.addEventListener('DOMContentLoaded', init)
+
+
+
