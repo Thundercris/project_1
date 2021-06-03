@@ -78,6 +78,7 @@ function init() {
     // number selected
     // const valueSelected = Math.max.apply(null, availableSpaces)
     // selectChoices(currentPlayer, valueSelected)
+    playAudioDisc()
 
     setTimeout(function () {
       swapPlayer()  
@@ -124,11 +125,22 @@ function init() {
         }
         if (inRow > 3){
           win = true
+          playWinnerAudio()
           alert(player + ' won!')
+          window.location.reload()
         } 
       })
     }
   } 
+  function playAudioDisc() {
+    const audio = new Audio('https://actions.google.com/sounds/v1/doors/deadbolt_lock.ogg')
+    audio.play()
+  }
+
+  // function playWinnerAudio() {
+  //   const audio = new Audio('')
+  //   audio.play()
+  // }
   // console.log(arrayResult)
   //check in the array which is the biggest element and in this way I will choose always the lowest cell in the column
   // const maxValue = Math.max.apply(null, arrayResult)

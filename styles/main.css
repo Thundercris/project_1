@@ -74,3 +74,15 @@ body {
   background-color: yellow;
 }
 
+.player-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-name {
+color: white;
+}
+
+.computer-name {
+
+}
