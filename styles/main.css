@@ -61,9 +61,9 @@ body {
   cursor: pointer;
 }
 
-.grid div.cell:hover {
-  /* background-color: whitesmoke; */
-}
+/* .grid div.cell:hover {
+  background-color: whitesmoke;
+} */
 
 .grid div.disc {
   background-repeat: no-repeat;
@@ -81,20 +81,66 @@ body {
 
 .grid div.computer {
   background-color:yellowgreen;
-  background-image: url('dinosaur-vacation-tourism.png')
+  background-image: url('dinosaur-vacation-tourism.png');
 }
 
 .player-box {
   display: flex;
-  justify-content: center;
-  background-image: url('cartoon-dinosaur.png');
+  justify-content:space-between;
+  margin-top: 100px;
 }
 
-.player-name {
-color: white;
-margin-right: 30px;
-}
 
 .player1 {
-
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-left: 65px;
 }
+
+.player-name1 {
+  color: white;
+  margin-right: 30px;
+  font-size: 20px;
+  font-style: bold;
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+}
+
+.image-player1 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  background-color:orange;
+  background-image: url('cartoon-dinosaur.png');
+  background-size: contain;
+}
+
+.player2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-left: 215px;
+}
+
+.player-name2 {
+  color: white;
+  margin-right: 30px;
+  font-size: 20px;
+  font-style: bold;
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  border: yellowgreen
+}
+
+.image-player2 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  background-color:yellowgreen;
+  background-size: contain;
+  background-image: url('dinosaur-vacation-tourism.png');
+}
+

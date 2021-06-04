@@ -13,7 +13,6 @@ function init() {
 
   const discClass = 'disc'
   const discStartPosition = 0
-  // let discCurrentPosition = null 
 
   // MAKE A GRID
   function createGrid(discStartPosition) {
@@ -34,8 +33,6 @@ function init() {
   //GIVE ME THE BIGGEST (LAST AVAILABLE NUMBER)
 
   const cellSelect = document.querySelectorAll('.cell') 
-  // const playerChoice = { currentChoice: null }
-  // const computerChoice = { currentChoice: null }
 
   let currentPlayer = 'player'
 
@@ -74,10 +71,6 @@ function init() {
     // console.log(availableSpaces)
     cells[Math.max.apply(null, availableSpaces)].classList.add('disc')
     cells[Math.max.apply(null, availableSpaces)].classList.add(currentPlayer)
-    // console.log(cells[Math.max.apply(null, availableSpaces)])
-    // number selected
-    // const valueSelected = Math.max.apply(null, availableSpaces)
-    // selectChoices(currentPlayer, valueSelected)
     playAudioDisc()
 
     setTimeout(function () {
@@ -101,17 +94,6 @@ function init() {
     // console.log(randomNumber)
     insertDisc(cells[randomNumber])
   }
-
-  //STORE SELECTED ELEMENT INTO TWO ARRAYS, PLAYER AND COMPUTER
-  // function selectChoices(player, valueSelected) {
-  //   if (player === 'player'){
-  //     playerChoices.push(valueSelected)
-  //     console.log(playerChoices)
-  //   } else {
-  //     computerChoices.push(valueSelected)
-  //     console.log(computerChoices)
-  //   }
-  // }
 
   function winCondition(array, player) {
     for (let i = 0; i < array.length; i++){
@@ -138,7 +120,6 @@ function init() {
   }
 
   cells.forEach(cell => {
-    // cell.addEventListener('click', insertDisc)
     cell.addEventListener('click', function(){
       insertDisc(cell)
     })
