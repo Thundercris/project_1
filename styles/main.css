@@ -1,16 +1,25 @@
+.main-box {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  margin: 25px;
+}
+
 header {
   display: flex;
   justify-content: center;
-  font-family: 'Jurassic Park', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   font-size: 100px;
   margin-top: 70px;
   color: white;
-  text-shadow: 4px 3px 8px red;
+  margin-bottom: 162px
+  /* text-shadow: 4px 3px 8px ; */
 }
 
 body {
   height: 100vh;
-  background-color: black;
+  background-color:aquamarine;
+  background-repeat: no-repeat;
 }
 
 .grid-wrapper {
@@ -31,8 +40,8 @@ body {
   justify-content: center;
   height: 600px;
   width: 700px;
-  background-image: url('jurassic-park-8k-nexus-7-samsung-galaxy-tab-10-note-0y6ottkl61uoscpf.jpeg');
-  background-size: 679px 1086px;
+  background-image: url('palm-background.jpeg');
+  background-size: 701px 721px;
   background-position: center;
   box-sizing: border-box;
   margin: 0;
@@ -53,11 +62,10 @@ body {
 }
 
 .grid div.cell:hover {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .grid div.disc {
-  background-image: url('PikPng.com_fangs-png_2953177.png');
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -67,22 +75,26 @@ body {
 }
 
 .grid div.player {
-  background-color: red;
+  background-color:orange;
+  background-image: url('cartoon-dinosaur.png');
 }
 
 .grid div.computer {
-  background-color: yellow;
+  background-color:yellowgreen;
+  background-image: url('dinosaur-vacation-tourism.png')
 }
 
 .player-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  background-image: url('cartoon-dinosaur.png');
 }
 
 .player-name {
 color: white;
+margin-right: 30px;
 }
 
-.computer-name {
+.player1 {
 
 }

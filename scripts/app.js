@@ -125,7 +125,7 @@ function init() {
         }
         if (inRow > 3){
           win = true
-          playWinnerAudio()
+          // playWinnerAudio()
           alert(player + ' won!')
           window.location.reload()
         } 
@@ -136,73 +136,6 @@ function init() {
     const audio = new Audio('https://actions.google.com/sounds/v1/doors/deadbolt_lock.ogg')
     audio.play()
   }
-
-  // function playWinnerAudio() {
-  //   const audio = new Audio('')
-  //   audio.play()
-  // }
-  // console.log(arrayResult)
-  //check in the array which is the biggest element and in this way I will choose always the lowest cell in the column
-  // const maxValue = Math.max.apply(null, arrayResult)
-  // console.log(maxValue)
-  //insert disc class
-  // cells[maxValue].classList.add('player')
-  //this is the position of the maxValue in the array
-  // const indexArray  = getTheArrayIndex(maxValue)
-  // console.log(indexArray)
-  //Position of the arrayResult that contain the maxValue
-  // const arrayPosition = choices.indexOf(arrayResult)
-  // console.log(arrayPosition)
-  //Remove maxValue from choices
-  // choices[arrayPosition] = choices[arrayPosition].slice(0, indexArray) //I have the issue of -1 so I might need to put all in a function
-  //Push maxValue into choosenElement (only one array for now to test it)
-  // choosenElement.push(maxValue)
-  // console.log(choices)
-  // console.log(choosenElement)
-
-  
-  
-  // I need to get the position of maxValue once I find it remove it from the array and + into choosenElement
-  // function getTheArrayIndex(maxValue) {
-  //   for (let i = 0; i < choices.length; i++) {
-  //     if (choices[i].indexOf(maxValue) !== -1){
-  //       return choices[i].indexOf(maxValue)
-  //     }
-  //   }
-  // } 
-
-  // I need to create the possible choices, the idea is having the arrays of each column, in this way I can also create a rule in order to choose always the n-1. 
-  // I need then to define the choice of both, human and computer(random)
-  // make the event listener working for all button that I click
-  // after the cell is clicked I need to know the position which is done by a number
-  // then I need to know that value in which arrays is, once this is known I can call the function and check on this array which is the biggest number (using the funcion I built before)
-  // Once I know which is the biggest value I need to know the position of this value
-  // after know the position, I need to check the position of the array result
-  // Once I know this, I need to find a way to remove the element from the "choices" that I already change to let, in this way I can use this for all future moves.
-  // I need to push the element I chose inside the "choosenElement" (I will need this later to check the result - probably is better having two array one for each player?)
-  
-  //win condition: I need to have 4 discs with the same color in a row column or diagonal. [I also need to check if there is a Tie( using the idea below)]
-  //in both cases if is a win or a tie ---> alert message and option of starting a new game (maybe with a button?)
-  //vertical option: check each column, organising those in arrays like choices if 4 disc in a row have the same color I win else continue the game (if I still having discs available)
-  //orizontal option: same of the above
-  //diagonal option: same of the above
-
-
-  // function playerChoose() {
-  //   playerChoice.currentChoice = arrayChoice[3] 
-  //   choosenElement.push(playerChoice.currentChoice)
-  //   console.log(choosenElement)
-  //   playerChoice.currentChoice = arrayChoice[4]  //&& results  !== choosenElement
-  //   choosenElement.push(playerChoice.currentChoice)
-  //   console.log(choosenElement)
-  // }
-  // playerChoose()
-
-  // function computerChoose() {
-  //computer choose random value from choices, in order to randomize what I can do is to convert choices in one array cointaining all element instead of having them split into arrays.
-  //but how can I pass the problem of the biggest value? maybe I can  get the last element (the biggest) of each array and then randomize only one element of each array? X.X
-    
-  // }
 
   cells.forEach(cell => {
     // cell.addEventListener('click', insertDisc)
