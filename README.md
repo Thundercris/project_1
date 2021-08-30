@@ -1,5 +1,9 @@
 # General Assembly Project 1:  Connect 4 (Front-end game in Vanilla JavaScript)
 
+## Overview
+
+Connect 4 grid-based game using Vanilla JavaScript.
+
 ## Timeframe
 
 7 days
