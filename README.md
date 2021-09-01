@@ -2,7 +2,7 @@
 
 ## Overview
 
-Connect 4 grid-based game using Vanilla JavaScript. First project after 3 weeks of
+Connect 4 grid-based game using Vanilla JavaScript. 
 
 ## Timeframe
 
