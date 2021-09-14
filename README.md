@@ -70,9 +70,9 @@ The second part was focused on verifying the win condition, styling and adding s
 * Restart the page after verifying the winning move.
 * Make the disc occupy the last available space beside which cell was selected in the column.
 
-## Key Learnings/Takeaway
+## Key Learnings/Takeaways
 
-This was my first project using Javascript, HTML, and CSS. I really enjoyed building the logic behind the game and I am looking forward to using these technologies in new projects. Also, I had the opportunity to apply what I have learned about flex, becoming more confident using pure CSS to styling.
+This was my first project using JavaScript, HTML, and CSS. I really enjoyed building the logic behind the game and I am looking forward to using these technologies in new projects. Also, I had the opportunity to apply what I have learned about flex, becoming more confident using pure CSS to styling.
 
 ## Bugs
 * After verifying the win condition for the “computer player” the alert showed up only after clicking on the grid.
