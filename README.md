@@ -82,4 +82,4 @@ This was my first project using Javascript, HTML, and CSS. I really enjoyed buil
 
 * Button to restart the game.
 * Adding additional sounds based on winning or losing the game.
-* Fix the bug
+* Fix the bug.
